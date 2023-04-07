@@ -1,5 +1,5 @@
 import Logo from './Logo';
-import Theme from './Theme';
+import ThemeToggle from './ThemeToggle';
 import { useState, useEffect } from 'react';
 
 function Header() {
@@ -14,7 +14,7 @@ function Header() {
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
-  function handleClickTheme() {
+  function handleClickThemeToggle() {
     setDarkMode(!darkMode);
   }
 
@@ -24,7 +24,7 @@ function Header() {
   return (
     <header className="main-header">
       <Logo darkMode={darkMode} />
-      <Theme darkMode={darkMode} onClick={handleClickTheme} />
+      <ThemeToggle darkMode={darkMode} onClick={handleClickThemeToggle} />
     </header>
   );
 }

@@ -1,6 +1,6 @@
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 
-function Theme({ darkMode, onClick }) {
+function ThemeToggle({ darkMode, onClick }) {
   return (
     <button
       className="toggle-theme"
@@ -17,4 +17,4 @@ function Theme({ darkMode, onClick }) {
   );
 }
 
-export default Theme;
+export default ThemeToggle;

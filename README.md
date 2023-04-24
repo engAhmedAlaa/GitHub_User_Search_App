@@ -13,6 +13,8 @@
 ## Built with
 
 - React
+- React Query
+- Axios
 - JavaScript
 - Semantic HTML5 markup
 - CSS custom properties

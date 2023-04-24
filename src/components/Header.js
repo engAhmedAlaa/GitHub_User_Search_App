@@ -2,29 +2,30 @@ import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
 import { useState, useEffect } from 'react';
 
+function getTheme() {
+  if (localStorage.getItem('theme')) return localStorage.getItem('theme');
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+}
+
 function Header() {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem('darkMode') !== null
-      ? JSON.parse(localStorage.getItem('darkMode'))
-      : window.matchMedia('(prefers-color-scheme: dark)').matches
-  );
+  const [theme, setTheme] = useState(getTheme);
 
   useEffect(() => {
-    document.body.className = darkMode ? 'dark' : 'light';
-    localStorage.setItem('darkMode', darkMode);
-  }, [darkMode]);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   function handleClickThemeToggle() {
-    setDarkMode(!darkMode);
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   }
 
-  if (document.body.className === '')
-    document.body.className = darkMode ? 'dark' : 'light';
+  document.documentElement.className = theme === 'dark' ? 'dark' : 'light';
 
   return (
     <header className="main-header">
-      <Logo darkMode={darkMode} />
-      <ThemeToggle darkMode={darkMode} onClick={handleClickThemeToggle} />
+      <Logo theme={theme} />
+      <ThemeToggle theme={theme} handleClick={handleClickThemeToggle} />
     </header>
   );
 }

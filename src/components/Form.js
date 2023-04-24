@@ -10,7 +10,6 @@ function Form({ setUserName }) {
 
   function handelSubmit(event) {
     event.preventDefault();
-    if (userInput === '') return;
     setUserName(userInput.trim());
   }
 
@@ -28,8 +27,12 @@ function Form({ setUserName }) {
         placeholder="Search GitHub username..."
         required
         autoFocus
+        spellCheck="false"
+        autoComplete="username"
       />
-      <button className="form-btn">Search</button>
+      <button className="form-btn" aria-label="Search github user">
+        Search
+      </button>
     </form>
   );
 }

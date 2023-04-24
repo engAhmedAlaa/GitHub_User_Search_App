@@ -1,14 +1,14 @@
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 
-function ThemeToggle({ darkMode, onClick }) {
+function ThemeToggle({ theme, handleClick }) {
   return (
     <button
       className="toggle-theme"
-      onClick={onClick}
+      onClick={handleClick}
       aria-label="Toggle Theme"
     >
-      <span className="theme-name">{darkMode ? 'Light' : 'Dark'}</span>
-      {darkMode ? (
+      <span className="theme-name">{theme === 'dark' ? 'Light' : 'Dark'}</span>
+      {theme === 'dark' ? (
         <BsFillSunFill className="theme-icon" />
       ) : (
         <BsFillMoonStarsFill className="theme-icon" />
